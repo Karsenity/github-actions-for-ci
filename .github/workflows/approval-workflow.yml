@@ -1,5 +1,11 @@
 name: Team Jacob's approval workflow
 on: pull_request_review
 jobs:
-  labelWhenApproved:
-    runs-on: ubuntu-latest
+  labelWhenApproved: # Name of the job
+    runs-on: ubuntu-latest #environment to run on
+    steps:
+      - uses: actions/label-when-approved-action@main
+        env:
+          APPROVALS: "1"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ADD_LABEL: "ready-to-merge"
